@@ -70,3 +70,29 @@ Processing by UsersController#index as HTML
 Completed 200 OK in 67ms (Views: 57.5ms | ActiveRecord: 2.0ms | Allocations: 22565)
 
 
+Started GET "/users" for ::1 at 2020-03-23 11:17:53 +0000
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:9:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.76ms)
+Completed 500 Internal Server Error in 34ms (ActiveRecord: 1.6ms | Allocations: 11492)
+
+
+  
+NoMethodError (undefined method `user' for #<User:0x00007fc1279d27a0>
+Did you mean?  super):
+  
+app/controllers/users_controller.rb:9:in `index'
+Started GET "/users" for ::1 at 2020-03-23 11:18:22 +0000
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:9:in `index'
+[active_model_serializers]   [1m[36mRestaurant Load (1.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:16:in `map'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (32.47ms)
+Completed 200 OK in 47ms (Views: 40.4ms | ActiveRecord: 3.2ms | Allocations: 19827)
+
+

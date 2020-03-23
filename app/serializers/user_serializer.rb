@@ -1,7 +1,7 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :data
+  attributes :user
 
-  def data
+  def user
     {
       id: object.id,
       first_name: object.first_name,
