@@ -26,4 +26,16 @@ class UsersController < ApplicationController
         end
       end
 
+      def create
+        @user = User.new(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], username: params[:username],password: params[:password])
+        
+        if @user.save
+          render json: @user, status: :created, location: @user
+        else
+          puts "failed"
+          render json: @user.errors, status: :unprocessable_entity
+        end
+      end
+ 
+
 end
