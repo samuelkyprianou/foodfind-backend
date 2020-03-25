@@ -233,3 +233,306 @@ Processing by UsersController#sign_in as JSON
 Completed 200 OK in 274ms (Views: 0.5ms | ActiveRecord: 0.1ms | Allocations: 815)
 
 
+Started POST "/sign-in" for ::1 at 2020-03-25 13:17:10 +0000
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#sign_in as JSON
+  Parameters: {"username"=>"samkipper", "password"=>"[FILTERED]", "user"=>{"username"=>"samkipper"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "samkipper"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:13:in `sign_in'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.2ms)
+Completed 200 OK in 270ms (Views: 3.5ms | ActiveRecord: 1.2ms | Allocations: 6519)
+
+
+Started POST "/sign-in" for ::1 at 2020-03-25 13:21:03 +0000
+Processing by UsersController#sign_in as JSON
+  Parameters: {"username"=>"samkipper", "password"=>"[FILTERED]", "user"=>{"username"=>"samkipper"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "samkipper"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:13:in `sign_in'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Completed 200 OK in 276ms (Views: 0.7ms | ActiveRecord: 0.3ms | Allocations: 815)
+
+
+Started GET "/users" for ::1 at 2020-03-25 14:01:52 +0000
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:9:in `index'
+[active_model_serializers]   [1m[36mRestaurant Load (1.0ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:16:in `map'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (44.3ms)
+Completed 200 OK in 92ms (Views: 86.0ms | ActiveRecord: 2.8ms | Allocations: 16047)
+
+
+Started GET "/favourites" for ::1 at 2020-03-25 14:05:19 +0000
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  
+AbstractController::ActionNotFound (The action 'index' could not be found for FavouritesController):
+  
+actionpack (6.0.2.2) lib/abstract_controller/base.rb:131:in `process'
+actionpack (6.0.2.2) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (6.0.2.2) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (6.0.2.2) lib/action_dispatch/routing/route_set.rb:51:in `dispatch'
+actionpack (6.0.2.2) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.2.2) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.2.2) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.2.2) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.2.2) lib/action_dispatch/routing/route_set.rb:837:in `call'
+rack (2.2.2) lib/rack/etag.rb:27:in `call'
+rack (2.2.2) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.2) lib/rack/head.rb:12:in `call'
+activerecord (6.0.2.2) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.2.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/sign-in" for ::1 at 2020-03-25 14:08:08 +0000
+Processing by UsersController#sign_in as JSON
+  Parameters: {"username"=>"samkipper", "password"=>"[FILTERED]", "user"=>{"username"=>"samkipper"}}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "samkipper"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:13:in `sign_in'
+[active_model_serializers]   [1m[36mRestaurant Load (1.7ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:15:in `sign_in'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (13.55ms)
+Completed 200 OK in 303ms (Views: 12.9ms | ActiveRecord: 5.5ms | Allocations: 15081)
+
+
+Started POST "/sign-in" for ::1 at 2020-03-25 14:13:07 +0000
+Processing by UsersController#sign_in as JSON
+  Parameters: {"username"=>"samkipper", "password"=>"[FILTERED]", "user"=>{"username"=>"samkipper"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "samkipper"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:13:in `sign_in'
+[active_model_serializers]   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:15:in `sign_in'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (2.37ms)
+Completed 200 OK in 275ms (Views: 2.6ms | ActiveRecord: 0.4ms | Allocations: 2189)
+
+
+Started POST "/sign-in" for ::1 at 2020-03-25 14:13:53 +0000
+Processing by UsersController#sign_in as JSON
+  Parameters: {"username"=>"samkipper", "password"=>"[FILTERED]", "user"=>{"username"=>"samkipper"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "samkipper"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:13:in `sign_in'
+[active_model_serializers]   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:15:in `sign_in'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (2.18ms)
+Completed 200 OK in 266ms (Views: 2.5ms | ActiveRecord: 0.3ms | Allocations: 2189)
+
+
+Started POST "/sign-in" for ::1 at 2020-03-25 14:14:59 +0000
+Processing by UsersController#sign_in as JSON
+  Parameters: {"username"=>"samkipper", "password"=>"[FILTERED]", "user"=>{"username"=>"samkipper"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "samkipper"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:13:in `sign_in'
+[active_model_serializers]   [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:15:in `sign_in'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (2.91ms)
+Completed 200 OK in 280ms (Views: 3.2ms | ActiveRecord: 0.3ms | Allocations: 2190)
+
+
+Started POST "/sign-in" for ::1 at 2020-03-25 14:25:45 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#sign_in as JSON
+  Parameters: {"username"=>"samkipper", "password"=>"[FILTERED]", "user"=>{"username"=>"samkipper"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "samkipper"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:13:in `sign_in'
+[active_model_serializers]   [1m[36mRestaurant Load (1.9ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:15:in `sign_in'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (10.95ms)
+Completed 200 OK in 299ms (Views: 11.7ms | ActiveRecord: 2.4ms | Allocations: 2244)
+
+
+Started POST "/sign-in" for ::1 at 2020-03-25 14:26:31 +0000
+Processing by UsersController#sign_in as JSON
+  Parameters: {"username"=>"samkipper", "password"=>"[FILTERED]", "user"=>{"username"=>"samkipper"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "samkipper"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:13:in `sign_in'
+[active_model_serializers]   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:15:in `sign_in'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (2.3ms)
+Completed 200 OK in 275ms (Views: 2.5ms | ActiveRecord: 0.4ms | Allocations: 2190)
+
+
+Started POST "/sign-in" for ::1 at 2020-03-25 14:32:28 +0000
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#sign_in as JSON
+  Parameters: {"username"=>"samkipper", "password"=>"[FILTERED]", "user"=>{"username"=>"samkipper"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "samkipper"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:13:in `sign_in'
+[active_model_serializers]   [1m[36mRestaurant Load (2.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:15:in `sign_in'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (4.51ms)
+Completed 200 OK in 281ms (Views: 2.6ms | ActiveRecord: 2.7ms | Allocations: 2234)
+
+
+Started POST "/sign-in" for ::1 at 2020-03-25 14:34:50 +0000
+Processing by UsersController#sign_in as JSON
+  Parameters: {"username"=>"samkipper", "password"=>"[FILTERED]", "user"=>{"username"=>"samkipper"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "samkipper"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:13:in `sign_in'
+[active_model_serializers]   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:15:in `sign_in'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (2.56ms)
+Completed 200 OK in 277ms (Views: 2.9ms | ActiveRecord: 0.7ms | Allocations: 2189)
+
+
+Started POST "/sign-in" for ::1 at 2020-03-25 14:36:16 +0000
+Processing by UsersController#sign_in as JSON
+  Parameters: {"username"=>"samkipper", "password"=>"[FILTERED]", "user"=>{"username"=>"samkipper"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "samkipper"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:13:in `sign_in'
+[active_model_serializers]   [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:15:in `sign_in'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (2.05ms)
+Completed 200 OK in 275ms (Views: 2.3ms | ActiveRecord: 0.3ms | Allocations: 2190)
+
+
+Started POST "/sign-in" for ::1 at 2020-03-25 14:39:14 +0000
+Processing by UsersController#sign_in as JSON
+  Parameters: {"username"=>"samkipper", "password"=>"[FILTERED]", "user"=>{"username"=>"samkipper"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "samkipper"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:13:in `sign_in'
+[active_model_serializers]   [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:15:in `sign_in'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (2.21ms)
+Completed 200 OK in 276ms (Views: 2.5ms | ActiveRecord: 0.3ms | Allocations: 2192)
+
+
+Started POST "/sign-in" for ::1 at 2020-03-25 14:42:13 +0000
+Processing by UsersController#sign_in as JSON
+  Parameters: {"username"=>"samkipper", "password"=>"[FILTERED]", "user"=>{"username"=>"samkipper"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "samkipper"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:13:in `sign_in'
+[active_model_serializers]   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:15:in `sign_in'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (1.9ms)
+Completed 200 OK in 277ms (Views: 2.2ms | ActiveRecord: 0.3ms | Allocations: 2190)
+
+
+Started POST "/sign-in" for ::1 at 2020-03-25 14:46:08 +0000
+Processing by UsersController#sign_in as JSON
+  Parameters: {"username"=>"samkipper", "password"=>"[FILTERED]", "user"=>{"username"=>"samkipper"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "samkipper"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:13:in `sign_in'
+[active_model_serializers]   [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:15:in `sign_in'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (6.54ms)
+Completed 200 OK in 294ms (Views: 8.2ms | ActiveRecord: 1.0ms | Allocations: 2189)
+
+
+Started GET "/validate" for ::1 at 2020-03-25 15:00:09 +0000
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.13ms)
+Completed 200 OK in 8ms (Views: 0.8ms | ActiveRecord: 0.5ms | Allocations: 2023)
+
+
+Started GET "/validate" for ::1 at 2020-03-25 15:02:30 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (3.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.43ms)
+Completed 200 OK in 22ms (Views: 2.6ms | ActiveRecord: 3.0ms | Allocations: 1895)
+
+
+Started GET "/validate" for ::1 at 2020-03-25 15:05:39 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.17ms)
+Completed 200 OK in 6ms (Views: 0.9ms | ActiveRecord: 0.4ms | Allocations: 1895)
+
+
+Started GET "/validate" for ::1 at 2020-03-25 15:06:27 +0000
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/Users/sam/Documents/GitHub/MOD4/foodfind-backend/app/controllers/users_controller.rb:23: syntax error, unexpected '}', expecting =>
+...user.id), get_user.restaurants}
+...                              ^):
+  
+app/controllers/users_controller.rb:23: syntax error, unexpected '}', expecting =>
+app/controllers/users_controller.rb:23: syntax error, unexpected '}', expecting =>
+Started POST "/sign-in" for ::1 at 2020-03-25 15:06:34 +0000
+  
+SyntaxError (/Users/sam/Documents/GitHub/MOD4/foodfind-backend/app/controllers/users_controller.rb:23: syntax error, unexpected '}', expecting =>
+...user.id), get_user.restaurants}
+...                              ^):
+  
+app/controllers/users_controller.rb:23: syntax error, unexpected '}', expecting =>
+app/controllers/users_controller.rb:23: syntax error, unexpected '}', expecting =>
+Started GET "/validate" for ::1 at 2020-03-25 15:07:20 +0000
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.15ms)
+Completed 200 OK in 13ms (Views: 2.1ms | ActiveRecord: 0.9ms | Allocations: 3870)
+
+
+Started POST "/sign-in" for ::1 at 2020-03-25 15:07:27 +0000
+Processing by UsersController#sign_in as JSON
+  Parameters: {"username"=>"samkipper", "password"=>"[FILTERED]", "user"=>{"username"=>"samkipper"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "samkipper"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:13:in `sign_in'
+[active_model_serializers]   [1m[36mRestaurant Load (1.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:15:in `sign_in'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (16.01ms)
+Completed 200 OK in 310ms (Views: 14.3ms | ActiveRecord: 2.8ms | Allocations: 18216)
+
+
+Started GET "/validate" for ::1 at 2020-03-25 15:07:39 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (1.97ms)
+Completed 200 OK in 7ms (Views: 2.3ms | ActiveRecord: 0.3ms | Allocations: 3957)
+
+
