@@ -27,10 +27,10 @@ class UsersController < ApplicationController
       end
 
       def create
-        @user = User.new(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], username: params[:username],password: params[:password])
+        user = User.new(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], username: params[:username],password: params[:password])
         
-        if @user.save
-          render json: @user, status: :created, location: @user
+        if user.save
+          render json: {username: user.username, token: generate_token(id: user.id), favourites: user.restaurants}
         else
           puts "failed"
           render json: @user.errors, status: :unprocessable_entity
