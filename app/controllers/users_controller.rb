@@ -33,7 +33,7 @@ class UsersController < ApplicationController
           render json: {username: user.username, token: generate_token(id: user.id), favourites: user.restaurants}
         else
           puts "failed"
-          render json: @user.errors, status: :unprocessable_entity
+          render json: user.errors, status: :unprocessable_entity
         end
       end
  
