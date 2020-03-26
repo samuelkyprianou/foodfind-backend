@@ -6,4 +6,5 @@ Rails.application.routes.draw do
 
   post "/sign-in", to: "users#sign_in"
   get "/validate", to: "users#validate"
+  delete "/unfavourite", to: "favourites#unfavourite"
 end

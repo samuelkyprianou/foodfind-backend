@@ -2378,3 +2378,1580 @@ Processing by UsersController#validate as */*
 Completed 200 OK in 9ms (Views: 5.0ms | ActiveRecord: 0.3ms | Allocations: 4769)
 
 
+Started GET "/validate" for ::1 at 2020-03-26 12:13:47 +0000
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (4.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (1.4ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 6]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (36.53ms)
+Completed 200 OK in 191ms (Views: 35.7ms | ActiveRecord: 8.6ms | Allocations: 23850)
+
+
+Started POST "/sign-in" for ::1 at 2020-03-26 12:16:01 +0000
+Processing by UsersController#sign_in as JSON
+  Parameters: {"username"=>"testing", "password"=>"[FILTERED]", "user"=>{"username"=>"testing"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "testing"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:13:in `sign_in'
+[active_model_serializers]   [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:15:in `sign_in'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (2.02ms)
+Completed 200 OK in 286ms (Views: 2.3ms | ActiveRecord: 0.4ms | Allocations: 2153)
+
+
+Started POST "/restaurants" for ::1 at 2020-03-26 12:16:14 +0000
+Processing by RestaurantsController#create as JSON
+  Parameters: {"name"=>"Dishoom", "cuisine"=>"Indian, Cafe, Curry", "picture"=>"https://b.zmtcdn.com/data/res_imagery/6103922_RESTAURANT_9441f64ea7cd029bd20ffb779df740b4.png?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A", "zomato_id"=>"6103922", "longitude"=>"-0.0765805556", "latitude"=>"51.5245361111", "user"=>"testing", "restaurant"=>{"name"=>"Dishoom", "cuisine"=>"Indian, Cafe, Curry", "picture"=>"https://b.zmtcdn.com/data/res_imagery/6103922_RESTAURANT_9441f64ea7cd029bd20ffb779df740b4.png?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A", "zomato_id"=>"6103922", "longitude"=>"-0.0765805556", "latitude"=>"51.5245361111"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "testing"], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:21:in `create'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:23:in `create'
+  [1m[36mRestaurant Create (2.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "cuisine", "picture", "zomato_id", "longitude", "latitude", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Dishoom"], ["cuisine", "Indian, Cafe, Curry"], ["picture", "https://b.zmtcdn.com/data/res_imagery/6103922_RESTAURANT_9441f64ea7cd029bd20ffb779df740b4.png?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A"], ["zomato_id", 6103922], ["longitude", -0.0765805556], ["latitude", 51.5245361111], ["created_at", "2020-03-26 12:16:14.858895"], ["updated_at", "2020-03-26 12:16:14.858895"]]
+  ↳ app/controllers/restaurants_controller.rb:23:in `create'
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:23:in `create'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:24:in `create'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:24:in `create'
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:24:in `create'
+  [1m[36mFavourite Create (0.7ms)[0m  [1m[32mINSERT INTO "favourites" ("user_id", "restaurant_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 5], ["restaurant_id", 9], ["created_at", "2020-03-26 12:16:14.880128"], ["updated_at", "2020-03-26 12:16:14.880128"]]
+  ↳ app/controllers/restaurants_controller.rb:24:in `create'
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:24:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.35ms)
+Completed 200 OK in 34ms (Views: 6.9ms | ActiveRecord: 5.8ms | Allocations: 10782)
+
+
+Started POST "/restaurants" for ::1 at 2020-03-26 12:22:06 +0000
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by RestaurantsController#create as JSON
+  Parameters: {"name"=>"Dishoom", "cuisine"=>"Indian, Cafe, Curry", "picture"=>"https://b.zmtcdn.com/data/res_imagery/6103922_RESTAURANT_9441f64ea7cd029bd20ffb779df740b4.png?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A", "zomato_id"=>"6103922", "longitude"=>"-0.0765805556", "latitude"=>"51.5245361111", "user"=>nil, "restaurant"=>{"name"=>"Dishoom", "cuisine"=>"Indian, Cafe, Curry", "picture"=>"https://b.zmtcdn.com/data/res_imagery/6103922_RESTAURANT_9441f64ea7cd029bd20ffb779df740b4.png?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A", "zomato_id"=>"6103922", "longitude"=>"-0.0765805556", "latitude"=>"51.5245361111"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:21:in `create'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:23:in `create'
+  [1m[36mRestaurant Create (0.7ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "cuisine", "picture", "zomato_id", "longitude", "latitude", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Dishoom"], ["cuisine", "Indian, Cafe, Curry"], ["picture", "https://b.zmtcdn.com/data/res_imagery/6103922_RESTAURANT_9441f64ea7cd029bd20ffb779df740b4.png?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A"], ["zomato_id", 6103922], ["longitude", -0.0765805556], ["latitude", 51.5245361111], ["created_at", "2020-03-26 12:22:06.535106"], ["updated_at", "2020-03-26 12:22:06.535106"]]
+  ↳ app/controllers/restaurants_controller.rb:23:in `create'
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:23:in `create'
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 1.9ms | Allocations: 3222)
+
+
+  
+NoMethodError (undefined method `errors' for nil:NilClass):
+  
+app/controllers/restaurants_controller.rb:28:in `create'
+Started POST "/sign-in" for ::1 at 2020-03-26 13:01:10 +0000
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#sign_in as JSON
+  Parameters: {"username"=>"testing", "password"=>"[FILTERED]", "user"=>{"username"=>"testing"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "testing"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:13:in `sign_in'
+[active_model_serializers]   [1m[36mRestaurant Load (2.6ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:15:in `sign_in'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (9.97ms)
+Completed 200 OK in 293ms (Views: 9.2ms | ActiveRecord: 3.1ms | Allocations: 2247)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 13:04:52 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (4.23ms)
+Completed 200 OK in 24ms (Views: 7.9ms | ActiveRecord: 0.7ms | Allocations: 3832)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 13:04:54 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (6.95ms)
+Completed 200 OK in 14ms (Views: 7.3ms | ActiveRecord: 0.5ms | Allocations: 3813)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 13:04:55 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.5ms)
+Completed 200 OK in 17ms (Views: 7.7ms | ActiveRecord: 0.7ms | Allocations: 3811)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 13:05:10 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (57.31ms)
+Completed 200 OK in 63ms (Views: 57.6ms | ActiveRecord: 0.4ms | Allocations: 3816)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 13:05:34 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (12.06ms)
+Completed 200 OK in 16ms (Views: 12.3ms | ActiveRecord: 0.3ms | Allocations: 3811)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 13:09:35 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (13.79ms)
+Completed 200 OK in 18ms (Views: 14.2ms | ActiveRecord: 0.4ms | Allocations: 3811)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 13:10:22 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (5.73ms)
+Completed 200 OK in 12ms (Views: 5.9ms | ActiveRecord: 0.5ms | Allocations: 3811)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 13:11:03 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (3.95ms)
+Completed 200 OK in 9ms (Views: 4.1ms | ActiveRecord: 0.8ms | Allocations: 3811)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 13:12:03 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (6.05ms)
+Completed 200 OK in 11ms (Views: 6.4ms | ActiveRecord: 0.4ms | Allocations: 3811)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 13:13:38 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.04ms)
+Completed 200 OK in 11ms (Views: 7.3ms | ActiveRecord: 0.4ms | Allocations: 3811)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 13:13:54 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (6.24ms)
+Completed 200 OK in 12ms (Views: 6.4ms | ActiveRecord: 0.4ms | Allocations: 3811)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 13:13:58 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (5.44ms)
+Completed 200 OK in 11ms (Views: 5.6ms | ActiveRecord: 0.5ms | Allocations: 3811)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 13:14:07 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (6.03ms)
+Completed 200 OK in 10ms (Views: 6.3ms | ActiveRecord: 0.4ms | Allocations: 3811)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 13:14:13 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.5ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (5.33ms)
+Completed 200 OK in 13ms (Views: 5.2ms | ActiveRecord: 0.7ms | Allocations: 3811)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 13:14:41 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (6.31ms)
+Completed 200 OK in 12ms (Views: 6.6ms | ActiveRecord: 0.4ms | Allocations: 3811)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 13:15:18 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (6.3ms)
+Completed 200 OK in 12ms (Views: 6.6ms | ActiveRecord: 0.4ms | Allocations: 3811)
+
+
+Started POST "/restaurants" for ::1 at 2020-03-26 13:15:25 +0000
+Processing by RestaurantsController#create as JSON
+  Parameters: {"name"=>"Tayyabs", "cuisine"=>"North Indian, Indian, Pakistani, Curry", "picture"=>"https://b.zmtcdn.com/data/pictures/3/6107493/ecdb8d66a7c6e5febb567c73138dcaf2.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A", "zomato_id"=>"6107493", "longitude"=>"-0.0634757000", "latitude"=>"51.5172403000", "user"=>"testing", "restaurant"=>{"name"=>"Tayyabs", "cuisine"=>"North Indian, Indian, Pakistani, Curry", "picture"=>"https://b.zmtcdn.com/data/pictures/3/6107493/ecdb8d66a7c6e5febb567c73138dcaf2.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A", "zomato_id"=>"6107493", "longitude"=>"-0.0634757000", "latitude"=>"51.5172403000"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "testing"], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:21:in `create'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:23:in `create'
+  [1m[36mRestaurant Create (2.8ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "cuisine", "picture", "zomato_id", "longitude", "latitude", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Tayyabs"], ["cuisine", "North Indian, Indian, Pakistani, Curry"], ["picture", "https://b.zmtcdn.com/data/pictures/3/6107493/ecdb8d66a7c6e5febb567c73138dcaf2.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A"], ["zomato_id", 6107493], ["longitude", -0.0634757], ["latitude", 51.5172403], ["created_at", "2020-03-26 13:15:25.973330"], ["updated_at", "2020-03-26 13:15:25.973330"]]
+  ↳ app/controllers/restaurants_controller.rb:23:in `create'
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:23:in `create'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:24:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:24:in `create'
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:24:in `create'
+  [1m[36mFavourite Create (0.7ms)[0m  [1m[32mINSERT INTO "favourites" ("user_id", "restaurant_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 5], ["restaurant_id", 11], ["created_at", "2020-03-26 13:15:25.986353"], ["updated_at", "2020-03-26 13:15:25.986353"]]
+  ↳ app/controllers/restaurants_controller.rb:24:in `create'
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:24:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.49ms)
+Completed 200 OK in 19ms (Views: 1.0ms | ActiveRecord: 5.8ms | Allocations: 6934)
+
+
+Started POST "/restaurants" for ::1 at 2020-03-26 13:15:40 +0000
+Processing by RestaurantsController#create as JSON
+  Parameters: {"name"=>"Flat Iron", "cuisine"=>"Steak", "picture"=>"https://b.zmtcdn.com/data/res_imagery/6114338_RESTAURANT_13d2cf3d7f310c53877eee6b7fceaa23.jpeg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A", "zomato_id"=>"6114338", "longitude"=>"-0.1383430000", "latitude"=>"51.5120690000", "user"=>"testing", "restaurant"=>{"name"=>"Flat Iron", "cuisine"=>"Steak", "picture"=>"https://b.zmtcdn.com/data/res_imagery/6114338_RESTAURANT_13d2cf3d7f310c53877eee6b7fceaa23.jpeg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A", "zomato_id"=>"6114338", "longitude"=>"-0.1383430000", "latitude"=>"51.5120690000"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "testing"], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:21:in `create'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:23:in `create'
+  [1m[36mRestaurant Create (0.5ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "cuisine", "picture", "zomato_id", "longitude", "latitude", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Flat Iron"], ["cuisine", "Steak"], ["picture", "https://b.zmtcdn.com/data/res_imagery/6114338_RESTAURANT_13d2cf3d7f310c53877eee6b7fceaa23.jpeg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A"], ["zomato_id", 6114338], ["longitude", -0.138343], ["latitude", 51.512069], ["created_at", "2020-03-26 13:15:40.584219"], ["updated_at", "2020-03-26 13:15:40.584219"]]
+  ↳ app/controllers/restaurants_controller.rb:23:in `create'
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:23:in `create'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:24:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:24:in `create'
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:24:in `create'
+  [1m[36mFavourite Create (0.5ms)[0m  [1m[32mINSERT INTO "favourites" ("user_id", "restaurant_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 5], ["restaurant_id", 12], ["created_at", "2020-03-26 13:15:40.595759"], ["updated_at", "2020-03-26 13:15:40.595759"]]
+  ↳ app/controllers/restaurants_controller.rb:24:in `create'
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:24:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.25ms)
+Completed 200 OK in 16ms (Views: 0.6ms | ActiveRecord: 3.6ms | Allocations: 6909)
+
+
+Started POST "/sign-in" for ::1 at 2020-03-26 13:18:33 +0000
+Processing by UsersController#sign_in as JSON
+  Parameters: {"username"=>"testing", "password"=>"[FILTERED]", "user"=>{"username"=>"testing"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "testing"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:13:in `sign_in'
+[active_model_serializers]   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:15:in `sign_in'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (2.42ms)
+Completed 200 OK in 281ms (Views: 2.6ms | ActiveRecord: 0.3ms | Allocations: 2565)
+
+
+Started POST "/restaurants" for ::1 at 2020-03-26 13:18:38 +0000
+Processing by RestaurantsController#create as JSON
+  Parameters: {"name"=>"Duck & Waffle", "cuisine"=>"British", "picture"=>"https://b.zmtcdn.com/data/res_imagery/6114829_RESTAURANT_115a2ed974f9addf6ce6a868f7c63459.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A", "zomato_id"=>"6114829", "longitude"=>"-0.0809630000", "latitude"=>"51.5162840000", "user"=>"testing", "restaurant"=>{"name"=>"Duck & Waffle", "cuisine"=>"British", "picture"=>"https://b.zmtcdn.com/data/res_imagery/6114829_RESTAURANT_115a2ed974f9addf6ce6a868f7c63459.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A", "zomato_id"=>"6114829", "longitude"=>"-0.0809630000", "latitude"=>"51.5162840000"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "testing"], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:21:in `create'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:23:in `create'
+  [1m[36mRestaurant Create (0.4ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "cuisine", "picture", "zomato_id", "longitude", "latitude", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Duck & Waffle"], ["cuisine", "British"], ["picture", "https://b.zmtcdn.com/data/res_imagery/6114829_RESTAURANT_115a2ed974f9addf6ce6a868f7c63459.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A"], ["zomato_id", 6114829], ["longitude", -0.080963], ["latitude", 51.516284], ["created_at", "2020-03-26 13:18:38.567557"], ["updated_at", "2020-03-26 13:18:38.567557"]]
+  ↳ app/controllers/restaurants_controller.rb:23:in `create'
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:23:in `create'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:24:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:24:in `create'
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:24:in `create'
+  [1m[36mFavourite Create (0.4ms)[0m  [1m[32mINSERT INTO "favourites" ("user_id", "restaurant_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 5], ["restaurant_id", 13], ["created_at", "2020-03-26 13:18:38.579052"], ["updated_at", "2020-03-26 13:18:38.579052"]]
+  ↳ app/controllers/restaurants_controller.rb:24:in `create'
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:24:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.23ms)
+Completed 200 OK in 16ms (Views: 0.6ms | ActiveRecord: 3.6ms | Allocations: 6912)
+
+
+Started POST "/sign-in" for ::1 at 2020-03-26 13:21:37 +0000
+Processing by UsersController#sign_in as JSON
+  Parameters: {"username"=>"testing", "password"=>"[FILTERED]", "user"=>{"username"=>"testing"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "testing"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:13:in `sign_in'
+[active_model_serializers]   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:15:in `sign_in'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (2.54ms)
+Completed 200 OK in 274ms (Views: 2.7ms | ActiveRecord: 0.3ms | Allocations: 2759)
+
+
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  [1m[36mRestaurant Load (1.0ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."zomato_id" = ? LIMIT ?[0m  [["zomato_id", 3], ["LIMIT", 1]]
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."zomato_id" = ? LIMIT ?[0m  [["zomato_id", 6103922], ["LIMIT", 1]]
+Started POST "/restaurants" for ::1 at 2020-03-26 13:42:02 +0000
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RestaurantsController#create as JSON
+  Parameters: {"name"=>"Five Guys", "cuisine"=>"American, Burger", "picture"=>"https://b.zmtcdn.com/data/reviews_photos/6b0/5256d1b186486fa6365093e547f326b0_1566769280.jpg?impolicy=newcropandfit&cropw=756&croph=756&cropoffsetx=0&cropoffsety=215&cropgravity=NorthWest&fitw=200&fith=200&fittype=ignore", "zomato_id"=>"6117406", "longitude"=>"-0.1267265884", "latitude"=>"51.5118400660", "user"=>"testing", "restaurant"=>{"name"=>"Five Guys", "cuisine"=>"American, Burger", "picture"=>"https://b.zmtcdn.com/data/reviews_photos/6b0/5256d1b186486fa6365093e547f326b0_1566769280.jpg?impolicy=newcropandfit&cropw=756&croph=756&cropoffsetx=0&cropoffsety=215&cropgravity=NorthWest&fitw=200&fith=200&fittype=ignore", "zomato_id"=>"6117406", "longitude"=>"-0.1267265884", "latitude"=>"51.5118400660"}}
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."zomato_id" = ? LIMIT ?[0m  [["zomato_id", 6117406], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:13:in `create'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "testing"], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:14:in `create'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `create'
+  [1m[36mRestaurant Create (0.9ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "cuisine", "picture", "zomato_id", "longitude", "latitude", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Five Guys"], ["cuisine", "American, Burger"], ["picture", "https://b.zmtcdn.com/data/reviews_photos/6b0/5256d1b186486fa6365093e547f326b0_1566769280.jpg?impolicy=newcropandfit&cropw=756&croph=756&cropoffsetx=0&cropoffsety=215&cropgravity=NorthWest&fitw=200&fith=200&fittype=ignore"], ["zomato_id", 6117406], ["longitude", -0.1267265884], ["latitude", 51.511840066], ["created_at", "2020-03-26 13:42:02.545901"], ["updated_at", "2020-03-26 13:42:02.545901"]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `create'
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `create'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:28:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:28:in `create'
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:28:in `create'
+  [1m[36mFavourite Create (1.1ms)[0m  [1m[32mINSERT INTO "favourites" ("user_id", "restaurant_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 5], ["restaurant_id", 14], ["created_at", "2020-03-26 13:42:02.567834"], ["updated_at", "2020-03-26 13:42:02.567834"]]
+  ↳ app/controllers/restaurants_controller.rb:28:in `create'
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:28:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.39ms)
+Completed 200 OK in 48ms (Views: 1.8ms | ActiveRecord: 6.9ms | Allocations: 26122)
+
+
+Started POST "/sign-in" for ::1 at 2020-03-26 13:43:26 +0000
+Processing by UsersController#sign_in as JSON
+  Parameters: {"username"=>"samkipper", "password"=>"[FILTERED]", "user"=>{"username"=>"samkipper"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "samkipper"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:13:in `sign_in'
+[active_model_serializers]   [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:15:in `sign_in'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (4.72ms)
+Completed 200 OK in 311ms (Views: 4.9ms | ActiveRecord: 0.9ms | Allocations: 4372)
+
+
+Started POST "/restaurants" for ::1 at 2020-03-26 13:43:35 +0000
+Processing by RestaurantsController#create as JSON
+  Parameters: {"name"=>"Five Guys", "cuisine"=>"American, Burger", "picture"=>"https://b.zmtcdn.com/data/reviews_photos/6b0/5256d1b186486fa6365093e547f326b0_1566769280.jpg?impolicy=newcropandfit&cropw=756&croph=756&cropoffsetx=0&cropoffsety=215&cropgravity=NorthWest&fitw=200&fith=200&fittype=ignore", "zomato_id"=>"6117406", "longitude"=>"-0.1267265884", "latitude"=>"51.5118400660", "user"=>"samkipper", "restaurant"=>{"name"=>"Five Guys", "cuisine"=>"American, Burger", "picture"=>"https://b.zmtcdn.com/data/reviews_photos/6b0/5256d1b186486fa6365093e547f326b0_1566769280.jpg?impolicy=newcropandfit&cropw=756&croph=756&cropoffsetx=0&cropoffsety=215&cropgravity=NorthWest&fitw=200&fith=200&fittype=ignore", "zomato_id"=>"6117406", "longitude"=>"-0.1267265884", "latitude"=>"51.5118400660"}}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."zomato_id" = ? LIMIT ?[0m  [["zomato_id", 6117406], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:13:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "samkipper"], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:14:in `create'
+Completed 500 Internal Server Error in 145ms (ActiveRecord: 0.3ms | Allocations: 72389)
+
+
+  
+NameError (undefined local variable or method `new_restaurant' for #<RestaurantsController:0x00007fc979dbd2c0>
+Did you mean?  restaurant):
+  
+app/controllers/restaurants_controller.rb:16:in `create'
+Started GET "/validate" for ::1 at 2020-03-26 13:46:05 +0000
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (26.04ms)
+Completed 200 OK in 56ms (Views: 24.7ms | ActiveRecord: 3.3ms | Allocations: 18793)
+
+
+Started POST "/restaurants" for ::1 at 2020-03-26 13:46:25 +0000
+Processing by RestaurantsController#create as JSON
+  Parameters: {"name"=>"Five Guys", "cuisine"=>"American, Burger", "picture"=>"https://b.zmtcdn.com/data/reviews_photos/6b0/5256d1b186486fa6365093e547f326b0_1566769280.jpg?impolicy=newcropandfit&cropw=756&croph=756&cropoffsetx=0&cropoffsety=215&cropgravity=NorthWest&fitw=200&fith=200&fittype=ignore", "zomato_id"=>"6117406", "longitude"=>"-0.1267265884", "latitude"=>"51.5118400660", "user"=>"samkipper", "restaurant"=>{"name"=>"Five Guys", "cuisine"=>"American, Burger", "picture"=>"https://b.zmtcdn.com/data/reviews_photos/6b0/5256d1b186486fa6365093e547f326b0_1566769280.jpg?impolicy=newcropandfit&cropw=756&croph=756&cropoffsetx=0&cropoffsety=215&cropgravity=NorthWest&fitw=200&fith=200&fittype=ignore", "zomato_id"=>"6117406", "longitude"=>"-0.1267265884", "latitude"=>"51.5118400660"}}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."zomato_id" = ? LIMIT ?[0m  [["zomato_id", 6117406], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:13:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "samkipper"], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:14:in `create'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:16:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:16:in `create'
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:16:in `create'
+  [1m[36mFavourite Create (0.4ms)[0m  [1m[32mINSERT INTO "favourites" ("user_id", "restaurant_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 1], ["restaurant_id", 14], ["created_at", "2020-03-26 13:46:25.143985"], ["updated_at", "2020-03-26 13:46:25.143985"]]
+  ↳ app/controllers/restaurants_controller.rb:16:in `create'
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:16:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.38ms)
+Completed 200 OK in 20ms (Views: 0.8ms | ActiveRecord: 2.9ms | Allocations: 8846)
+
+
+Started POST "/restaurants" for ::1 at 2020-03-26 13:48:27 +0000
+Processing by RestaurantsController#create as JSON
+  Parameters: {"name"=>"Barrafina", "cuisine"=>"Spanish, Tapas, Healthy Food", "picture"=>"https://b.zmtcdn.com/data/pictures/chains/8/6103998/ee82570ced66fbb2ebcc723eaecf2566.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A", "zomato_id"=>"6103998", "longitude"=>"-0.1327640000", "latitude"=>"51.5142310000", "user"=>"samkipper", "restaurant"=>{"name"=>"Barrafina", "cuisine"=>"Spanish, Tapas, Healthy Food", "picture"=>"https://b.zmtcdn.com/data/pictures/chains/8/6103998/ee82570ced66fbb2ebcc723eaecf2566.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A", "zomato_id"=>"6103998", "longitude"=>"-0.1327640000", "latitude"=>"51.5142310000"}}
+  [1m[36mRestaurant Load (0.7ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."zomato_id" = ? LIMIT ?[0m  [["zomato_id", 6103998], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:13:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "samkipper"], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:14:in `create'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `create'
+  [1m[36mRestaurant Create (0.5ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "cuisine", "picture", "zomato_id", "longitude", "latitude", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Barrafina"], ["cuisine", "Spanish, Tapas, Healthy Food"], ["picture", "https://b.zmtcdn.com/data/pictures/chains/8/6103998/ee82570ced66fbb2ebcc723eaecf2566.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A"], ["zomato_id", 6103998], ["longitude", -0.132764], ["latitude", 51.514231], ["created_at", "2020-03-26 13:48:27.061931"], ["updated_at", "2020-03-26 13:48:27.061931"]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `create'
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `create'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:28:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:28:in `create'
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:28:in `create'
+  [1m[36mFavourite Create (0.4ms)[0m  [1m[32mINSERT INTO "favourites" ("user_id", "restaurant_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 1], ["restaurant_id", 15], ["created_at", "2020-03-26 13:48:27.070719"], ["updated_at", "2020-03-26 13:48:27.070719"]]
+  ↳ app/controllers/restaurants_controller.rb:28:in `create'
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:28:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.24ms)
+Completed 200 OK in 20ms (Views: 0.6ms | ActiveRecord: 4.0ms | Allocations: 7491)
+
+
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mFavourite Load (0.7ms)[0m  [1m[34mSELECT "favourites".* FROM "favourites" WHERE "favourites"."user_id" = ? AND "favourites"."restaurant_id" = ? LIMIT ?[0m  [["user_id", 1], ["restaurant_id", 14], ["LIMIT", 11]]
+Started POST "/sign-in" for ::1 at 2020-03-26 15:44:04 +0000
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#sign_in as JSON
+  Parameters: {"username"=>"testing", "password"=>"[FILTERED]", "user"=>{"username"=>"testing"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "testing"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:13:in `sign_in'
+[active_model_serializers]   [1m[36mRestaurant Load (1.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:15:in `sign_in'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (17.54ms)
+Completed 200 OK in 312ms (Views: 16.7ms | ActiveRecord: 3.3ms | Allocations: 19771)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 15:45:46 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (6.48ms)
+Completed 200 OK in 12ms (Views: 7.0ms | ActiveRecord: 0.5ms | Allocations: 4722)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 15:46:21 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (5.23ms)
+Completed 200 OK in 11ms (Views: 5.3ms | ActiveRecord: 0.6ms | Allocations: 4594)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 15:50:19 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (6.45ms)
+Completed 200 OK in 12ms (Views: 6.8ms | ActiveRecord: 0.5ms | Allocations: 4594)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 15:50:45 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (3.93ms)
+Completed 200 OK in 90ms (Views: 4.6ms | ActiveRecord: 0.4ms | Allocations: 4578)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 15:50:49 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (3.04ms)
+Completed 200 OK in 9ms (Views: 3.2ms | ActiveRecord: 0.5ms | Allocations: 4575)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 15:50:57 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (4.59ms)
+Completed 200 OK in 10ms (Views: 4.8ms | ActiveRecord: 0.5ms | Allocations: 4594)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 15:51:01 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (4.8ms)
+Completed 200 OK in 9ms (Views: 5.0ms | ActiveRecord: 0.4ms | Allocations: 4575)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 15:51:42 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (5.67ms)
+Completed 200 OK in 10ms (Views: 6.0ms | ActiveRecord: 0.4ms | Allocations: 4575)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 15:51:56 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (4.81ms)
+Completed 200 OK in 10ms (Views: 5.1ms | ActiveRecord: 0.4ms | Allocations: 4575)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 15:52:19 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (3.28ms)
+Completed 200 OK in 8ms (Views: 3.5ms | ActiveRecord: 0.3ms | Allocations: 4575)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 15:52:27 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (3.84ms)
+Completed 200 OK in 9ms (Views: 4.1ms | ActiveRecord: 0.4ms | Allocations: 4575)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 15:52:33 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (9.32ms)
+Completed 200 OK in 13ms (Views: 9.6ms | ActiveRecord: 0.4ms | Allocations: 4575)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 15:52:36 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (4.08ms)
+Completed 200 OK in 11ms (Views: 4.5ms | ActiveRecord: 0.4ms | Allocations: 4575)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 15:52:42 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (4.55ms)
+Completed 200 OK in 8ms (Views: 4.8ms | ActiveRecord: 0.3ms | Allocations: 4575)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 15:53:12 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (4.73ms)
+Completed 200 OK in 12ms (Views: 5.0ms | ActiveRecord: 0.5ms | Allocations: 4575)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 15:53:15 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (5.76ms)
+Completed 200 OK in 13ms (Views: 6.0ms | ActiveRecord: 0.7ms | Allocations: 4575)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 15:53:28 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (2.47ms)
+Completed 200 OK in 47ms (Views: 2.7ms | ActiveRecord: 0.5ms | Allocations: 4578)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 15:53:44 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (5.32ms)
+Completed 200 OK in 12ms (Views: 5.8ms | ActiveRecord: 0.5ms | Allocations: 4575)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 15:54:03 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (4.52ms)
+Completed 200 OK in 9ms (Views: 4.8ms | ActiveRecord: 0.3ms | Allocations: 4575)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 15:54:06 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (4.48ms)
+Completed 200 OK in 16ms (Views: 5.1ms | ActiveRecord: 0.5ms | Allocations: 4575)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 15:55:20 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (4.28ms)
+Completed 200 OK in 12ms (Views: 4.7ms | ActiveRecord: 0.5ms | Allocations: 4575)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 15:55:32 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (5.3ms)
+Completed 200 OK in 10ms (Views: 5.5ms | ActiveRecord: 0.4ms | Allocations: 4575)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 15:55:37 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (4.89ms)
+Completed 200 OK in 9ms (Views: 5.1ms | ActiveRecord: 0.4ms | Allocations: 4575)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 15:55:39 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (4.63ms)
+Completed 200 OK in 9ms (Views: 4.8ms | ActiveRecord: 0.3ms | Allocations: 4575)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 15:55:47 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (4.46ms)
+Completed 200 OK in 11ms (Views: 4.9ms | ActiveRecord: 0.6ms | Allocations: 4575)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 15:55:52 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (3.96ms)
+Completed 200 OK in 14ms (Views: 4.2ms | ActiveRecord: 0.9ms | Allocations: 4575)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 15:56:03 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (4.86ms)
+Completed 200 OK in 8ms (Views: 5.1ms | ActiveRecord: 0.4ms | Allocations: 4575)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 15:56:06 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (4.86ms)
+Completed 200 OK in 8ms (Views: 5.1ms | ActiveRecord: 0.3ms | Allocations: 4575)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 15:56:07 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (4.14ms)
+Completed 200 OK in 8ms (Views: 4.3ms | ActiveRecord: 0.4ms | Allocations: 4575)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 15:56:43 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (2.47ms)
+Completed 200 OK in 23ms (Views: 2.6ms | ActiveRecord: 0.3ms | Allocations: 4578)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 15:57:30 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (3.95ms)
+Completed 200 OK in 9ms (Views: 4.4ms | ActiveRecord: 0.3ms | Allocations: 4575)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 15:57:39 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (4.89ms)
+Completed 200 OK in 9ms (Views: 5.4ms | ActiveRecord: 0.4ms | Allocations: 4575)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 15:57:56 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (5.9ms)
+Completed 200 OK in 11ms (Views: 6.1ms | ActiveRecord: 0.4ms | Allocations: 4575)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 15:58:17 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (4.89ms)
+Completed 200 OK in 8ms (Views: 5.1ms | ActiveRecord: 0.3ms | Allocations: 4575)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 15:58:22 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (3.6ms)
+Completed 200 OK in 8ms (Views: 3.9ms | ActiveRecord: 0.4ms | Allocations: 4575)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 15:58:27 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (6.42ms)
+Completed 200 OK in 10ms (Views: 6.6ms | ActiveRecord: 0.3ms | Allocations: 4575)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 15:58:48 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (4.83ms)
+Completed 200 OK in 10ms (Views: 5.0ms | ActiveRecord: 0.6ms | Allocations: 4575)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 15:58:59 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (3.8ms)
+Completed 200 OK in 14ms (Views: 5.8ms | ActiveRecord: 0.4ms | Allocations: 4575)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 15:59:09 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (4.46ms)
+Completed 200 OK in 9ms (Views: 4.8ms | ActiveRecord: 0.4ms | Allocations: 4575)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 15:59:12 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (4.94ms)
+Completed 200 OK in 9ms (Views: 5.2ms | ActiveRecord: 0.4ms | Allocations: 4575)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 15:59:50 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (12.32ms)
+Completed 200 OK in 19ms (Views: 12.7ms | ActiveRecord: 0.5ms | Allocations: 4575)
+
+
+Started DELETE "/favourites" for ::1 at 2020-03-26 16:00:48 +0000
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  
+ActionController::RoutingError (No route matches [DELETE] "/favourites"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/validate" for ::1 at 2020-03-26 16:01:35 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (16.2ms)
+Completed 200 OK in 54ms (Views: 15.2ms | ActiveRecord: 3.3ms | Allocations: 19326)
+
+
+Started DELETE "/favourite" for ::1 at 2020-03-26 16:01:37 +0000
+  
+ActionController::RoutingError (No route matches [DELETE] "/favourite"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/sign-in" for ::1 at 2020-03-26 16:08:07 +0000
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#sign_in as JSON
+  Parameters: {"username"=>"testing", "password"=>"[FILTERED]", "user"=>{"username"=>"testing"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "testing"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:13:in `sign_in'
+[active_model_serializers]   [1m[36mRestaurant Load (1.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:15:in `sign_in'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (16.7ms)
+Completed 200 OK in 312ms (Views: 16.2ms | ActiveRecord: 3.2ms | Allocations: 19770)
+
+
+Started DELETE "/unfavourite" for ::1 at 2020-03-26 16:08:11 +0000
+Processing by FavouritesController#unfavourite as JSON
+  Parameters: {"restaurant"=>{"id"=>12, "name"=>"Flat Iron", "cuisine"=>"Steak", "picture"=>"https://b.zmtcdn.com/data/res_imagery/6114338_RESTAURANT_13d2cf3d7f310c53877eee6b7fceaa23.jpeg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A", "zomato_id"=>6114338, "longitude"=>-0.138343, "latitude"=>51.512069, "created_at"=>"2020-03-26T13:15:40.584Z", "updated_at"=>"2020-03-26T13:15:40.584Z"}, "user"=>"testing", "favourite"=>{}}
+Completed 500 Internal Server Error in 369432ms (ActiveRecord: 0.0ms | Allocations: 129980)
+
+
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `unfavourite'
+app/controllers/favourites_controller.rb:5:in `unfavourite'
+Started GET "/validate" for ::1 at 2020-03-26 16:14:31 +0000
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (26.09ms)
+Completed 200 OK in 76ms (Views: 29.1ms | ActiveRecord: 2.7ms | Allocations: 23656)
+
+
+Started DELETE "/unfavourite" for ::1 at 2020-03-26 16:14:34 +0000
+Processing by FavouritesController#unfavourite as JSON
+  Parameters: {"restaurant"=>{"id"=>9, "name"=>"Dishoom", "cuisine"=>"Indian, Cafe, Curry", "picture"=>"https://b.zmtcdn.com/data/res_imagery/6103922_RESTAURANT_9441f64ea7cd029bd20ffb779df740b4.png?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A", "zomato_id"=>6103922, "longitude"=>-0.0765805556, "latitude"=>51.5245361111, "created_at"=>"2020-03-26T12:16:14.858Z", "updated_at"=>"2020-03-26T12:16:14.858Z"}, "user"=>"testing", "favourite"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "testing"], ["LIMIT", 1]]
+  ↳ app/controllers/favourites_controller.rb:5:in `unfavourite'
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.2ms | Allocations: 1352)
+
+
+  
+NoMethodError (undefined method `id' for #<ActionController::Parameters:0x00007fb63a2efea8>):
+  
+app/controllers/favourites_controller.rb:6:in `unfavourite'
+Started GET "/validate" for ::1 at 2020-03-26 16:15:11 +0000
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (16.84ms)
+Completed 200 OK in 40ms (Views: 15.5ms | ActiveRecord: 2.9ms | Allocations: 19338)
+
+
+Started DELETE "/unfavourite" for ::1 at 2020-03-26 16:15:12 +0000
+Processing by FavouritesController#unfavourite as JSON
+  Parameters: {"restaurant"=>{"id"=>9, "name"=>"Dishoom", "cuisine"=>"Indian, Cafe, Curry", "picture"=>"https://b.zmtcdn.com/data/res_imagery/6103922_RESTAURANT_9441f64ea7cd029bd20ffb779df740b4.png?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A", "zomato_id"=>6103922, "longitude"=>-0.0765805556, "latitude"=>51.5245361111, "created_at"=>"2020-03-26T12:16:14.858Z", "updated_at"=>"2020-03-26T12:16:14.858Z"}, "user"=>"testing", "favourite"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "testing"], ["LIMIT", 1]]
+  ↳ app/controllers/favourites_controller.rb:5:in `unfavourite'
+Completed 500 Internal Server Error in 135664ms (ActiveRecord: 0.2ms | Allocations: 98994)
+
+
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `unfavourite'
+app/controllers/favourites_controller.rb:7:in `unfavourite'
+Started GET "/validate" for ::1 at 2020-03-26 16:17:39 +0000
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (16.28ms)
+Completed 200 OK in 61ms (Views: 16.9ms | ActiveRecord: 2.0ms | Allocations: 23655)
+
+
+Started DELETE "/unfavourite" for ::1 at 2020-03-26 16:17:41 +0000
+Processing by FavouritesController#unfavourite as JSON
+  Parameters: {"restaurant"=>{"id"=>9, "name"=>"Dishoom", "cuisine"=>"Indian, Cafe, Curry", "picture"=>"https://b.zmtcdn.com/data/res_imagery/6103922_RESTAURANT_9441f64ea7cd029bd20ffb779df740b4.png?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A", "zomato_id"=>6103922, "longitude"=>-0.0765805556, "latitude"=>51.5245361111, "created_at"=>"2020-03-26T12:16:14.858Z", "updated_at"=>"2020-03-26T12:16:14.858Z"}, "user"=>"testing", "favourite"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "testing"], ["LIMIT", 1]]
+  ↳ app/controllers/favourites_controller.rb:5:in `unfavourite'
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 0.2ms | Allocations: 938)
+
+
+  
+ArgumentError (wrong number of arguments (given 0, expected 1)):
+  
+app/controllers/favourites_controller.rb:7:in `unfavourite'
+Started DELETE "/unfavourite" for ::1 at 2020-03-26 16:18:42 +0000
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by FavouritesController#unfavourite as JSON
+  Parameters: {"restaurant"=>{"id"=>11, "name"=>"Tayyabs", "cuisine"=>"North Indian, Indian, Pakistani, Curry", "picture"=>"https://b.zmtcdn.com/data/pictures/3/6107493/ecdb8d66a7c6e5febb567c73138dcaf2.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A", "zomato_id"=>6107493, "longitude"=>-0.0634757, "latitude"=>51.5172403, "created_at"=>"2020-03-26T13:15:25.973Z", "updated_at"=>"2020-03-26T13:15:25.973Z"}, "user"=>"testing", "favourite"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "testing"], ["LIMIT", 1]]
+  ↳ app/controllers/favourites_controller.rb:5:in `unfavourite'
+  [1m[36mFavourite Load (0.3ms)[0m  [1m[34mSELECT "favourites".* FROM "favourites" WHERE "favourites"."user_id" = ? AND "favourites"."restaurant_id" = ? LIMIT ?[0m  [["user_id", 5], ["restaurant_id", 11], ["LIMIT", 11]]
+  ↳ app/controllers/favourites_controller.rb:8:in `unfavourite'
+Completed 500 Internal Server Error in 34371ms (ActiveRecord: 1.9ms | Allocations: 122531)
+
+
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `unfavourite'
+app/controllers/favourites_controller.rb:8:in `unfavourite'
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mFavourite Load (0.2ms)[0m  [1m[34mSELECT "favourites".* FROM "favourites" WHERE "favourites"."user_id" = ? AND "favourites"."restaurant_id" = ? LIMIT ?[0m  [["user_id", 1], ["restaurant_id", 14], ["LIMIT", 1]]
+Started GET "/validate" for ::1 at 2020-03-26 16:20:03 +0000
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (21.01ms)
+Completed 200 OK in 58ms (Views: 21.5ms | ActiveRecord: 2.1ms | Allocations: 23654)
+
+
+Started DELETE "/unfavourite" for ::1 at 2020-03-26 16:20:04 +0000
+Processing by FavouritesController#unfavourite as JSON
+  Parameters: {"restaurant"=>{"id"=>9, "name"=>"Dishoom", "cuisine"=>"Indian, Cafe, Curry", "picture"=>"https://b.zmtcdn.com/data/res_imagery/6103922_RESTAURANT_9441f64ea7cd029bd20ffb779df740b4.png?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A", "zomato_id"=>6103922, "longitude"=>-0.0765805556, "latitude"=>51.5245361111, "created_at"=>"2020-03-26T12:16:14.858Z", "updated_at"=>"2020-03-26T12:16:14.858Z"}, "user"=>"testing", "favourite"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "testing"], ["LIMIT", 1]]
+  ↳ app/controllers/favourites_controller.rb:5:in `unfavourite'
+  [1m[36mFavourite Load (21.2ms)[0m  [1m[34mSELECT "favourites".* FROM "favourites" WHERE "favourites"."user_id" = ? AND "favourites"."restaurant_id" = ? LIMIT ?[0m  [["user_id", 5], ["restaurant_id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/favourites_controller.rb:6:in `unfavourite'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/favourites_controller.rb:7:in `unfavourite'
+  [1m[36mFavourite Destroy (1.1ms)[0m  [1m[31mDELETE FROM "favourites" WHERE "favourites"."id" = ?[0m  [["id", 8]]
+  ↳ app/controllers/favourites_controller.rb:7:in `unfavourite'
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/favourites_controller.rb:7:in `unfavourite'
+Completed 204 No Content in 34ms (ActiveRecord: 24.4ms | Allocations: 5870)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 16:20:33 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (3.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (4.92ms)
+Completed 200 OK in 15ms (Views: 5.3ms | ActiveRecord: 3.2ms | Allocations: 4407)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 16:20:52 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (4.74ms)
+Completed 200 OK in 9ms (Views: 5.0ms | ActiveRecord: 0.4ms | Allocations: 4407)
+
+
+Started DELETE "/unfavourite" for ::1 at 2020-03-26 16:20:54 +0000
+Processing by FavouritesController#unfavourite as JSON
+  Parameters: {"restaurant"=>{"id"=>11, "name"=>"Tayyabs", "cuisine"=>"North Indian, Indian, Pakistani, Curry", "picture"=>"https://b.zmtcdn.com/data/pictures/3/6107493/ecdb8d66a7c6e5febb567c73138dcaf2.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A", "zomato_id"=>6107493, "longitude"=>-0.0634757, "latitude"=>51.5172403, "created_at"=>"2020-03-26T13:15:25.973Z", "updated_at"=>"2020-03-26T13:15:25.973Z"}, "user"=>"testing", "favourite"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "testing"], ["LIMIT", 1]]
+  ↳ app/controllers/favourites_controller.rb:5:in `unfavourite'
+  [1m[36mFavourite Load (0.1ms)[0m  [1m[34mSELECT "favourites".* FROM "favourites" WHERE "favourites"."user_id" = ? AND "favourites"."restaurant_id" = ? LIMIT ?[0m  [["user_id", 5], ["restaurant_id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/favourites_controller.rb:6:in `unfavourite'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/favourites_controller.rb:7:in `unfavourite'
+  [1m[36mFavourite Destroy (1.0ms)[0m  [1m[31mDELETE FROM "favourites" WHERE "favourites"."id" = ?[0m  [["id", 9]]
+  ↳ app/controllers/favourites_controller.rb:7:in `unfavourite'
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/favourites_controller.rb:7:in `unfavourite'
+Completed 204 No Content in 6ms (ActiveRecord: 2.1ms | Allocations: 2694)
+
+
+Started DELETE "/unfavourite" for ::1 at 2020-03-26 16:21:10 +0000
+Processing by FavouritesController#unfavourite as JSON
+  Parameters: {"restaurant"=>{"id"=>12, "name"=>"Flat Iron", "cuisine"=>"Steak", "picture"=>"https://b.zmtcdn.com/data/res_imagery/6114338_RESTAURANT_13d2cf3d7f310c53877eee6b7fceaa23.jpeg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A", "zomato_id"=>6114338, "longitude"=>-0.138343, "latitude"=>51.512069, "created_at"=>"2020-03-26T13:15:40.584Z", "updated_at"=>"2020-03-26T13:15:40.584Z"}, "user"=>"testing", "favourite"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "testing"], ["LIMIT", 1]]
+  ↳ app/controllers/favourites_controller.rb:5:in `unfavourite'
+  [1m[36mFavourite Load (0.1ms)[0m  [1m[34mSELECT "favourites".* FROM "favourites" WHERE "favourites"."user_id" = ? AND "favourites"."restaurant_id" = ? LIMIT ?[0m  [["user_id", 5], ["restaurant_id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/favourites_controller.rb:6:in `unfavourite'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/favourites_controller.rb:7:in `unfavourite'
+  [1m[36mFavourite Destroy (0.4ms)[0m  [1m[31mDELETE FROM "favourites" WHERE "favourites"."id" = ?[0m  [["id", 10]]
+  ↳ app/controllers/favourites_controller.rb:7:in `unfavourite'
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/favourites_controller.rb:7:in `unfavourite'
+Completed 204 No Content in 5ms (ActiveRecord: 1.8ms | Allocations: 2676)
+
+
+Started POST "/restaurants" for ::1 at 2020-03-26 16:21:13 +0000
+Processing by RestaurantsController#create as JSON
+  Parameters: {"name"=>"Flat Iron", "cuisine"=>"Steak", "picture"=>"https://b.zmtcdn.com/data/res_imagery/6114338_RESTAURANT_13d2cf3d7f310c53877eee6b7fceaa23.jpeg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A", "zomato_id"=>"6114338", "longitude"=>"-0.1383430000", "latitude"=>"51.5120690000", "user"=>"testing", "restaurant"=>{"name"=>"Flat Iron", "cuisine"=>"Steak", "picture"=>"https://b.zmtcdn.com/data/res_imagery/6114338_RESTAURANT_13d2cf3d7f310c53877eee6b7fceaa23.jpeg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A", "zomato_id"=>"6114338", "longitude"=>"-0.1383430000", "latitude"=>"51.5120690000"}}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."zomato_id" = ? LIMIT ?[0m  [["zomato_id", 6114338], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:13:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "testing"], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:14:in `create'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:16:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:16:in `create'
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:16:in `create'
+  [1m[36mFavourite Create (0.4ms)[0m  [1m[32mINSERT INTO "favourites" ("user_id", "restaurant_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 5], ["restaurant_id", 4], ["created_at", "2020-03-26 16:21:13.565643"], ["updated_at", "2020-03-26 16:21:13.565643"]]
+  ↳ app/controllers/restaurants_controller.rb:16:in `create'
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:16:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (1.1ms)
+Completed 200 OK in 13ms (Views: 1.7ms | ActiveRecord: 2.0ms | Allocations: 6374)
+
+
+Started GET "/validate" for ::1 at 2020-03-26 16:21:26 +0000
+Processing by UsersController#validate as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `get_user'
+[active_model_serializers]   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "favourites" ON "restaurants"."id" = "favourites"."restaurant_id" WHERE "favourites"."user_id" = ?[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:23:in `validate'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (6.24ms)
+Completed 200 OK in 12ms (Views: 6.5ms | ActiveRecord: 0.4ms | Allocations: 4198)
+
+
