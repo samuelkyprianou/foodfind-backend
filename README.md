@@ -1,5 +1,5 @@
 ## Food-Find - link
-Backend repository - https://github.com/samuelkyprianou/foodfind-backend
+Frontend repository - https://github.com/Harriet97/food-find-frontend
 
 Food-Find is a web app that lets you find a restaurant near you and find out which streaming services it is currently available on. Users are able to create an account and log in. User details are saved in brower session. Logged in users can save restaurants to their favourites list. If a user is not logged in and tries to save a show they will be prompted to log in. 
 
